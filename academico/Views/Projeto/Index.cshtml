@@ -1,0 +1,41 @@
+﻿@model IEnumerable<academico.Models.Projeto>
+
+@{
+    ViewData["Title"] = "Lista de Projetos";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<p>
+    <a asp-action="Create">Novo Projeto</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Sigla</th>
+            <th>Ano</th>
+            <th>Status</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Nome</td>
+                <td>@item.Sigla</td>
+                <td>@item.Ano</td>
+                <td>@(item.Ativo ? "Ativo" : "Inativo")</td>
+                <td>
+                    @Html.ActionLink("Editar", "Edit", new { id = item.ProjetoId }) |
+                    @Html.ActionLink("Detalhes", "Details", new { id = item.ProjetoId }) |
+                    @Html.ActionLink("Excluir", "Delete", new { id = item.ProjetoId })
+                </td>
+            </tr>
+        }
+
+    </tbody>
+</table>

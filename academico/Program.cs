@@ -7,6 +7,8 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddSingleton<IAlunoRepository, InMemoryRepository>();
 
+builder.Services.AddSingleton<IProjetoRepository, ProjetoRepository>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
